@@ -6,6 +6,6 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY blackfriday.jar /app/
+COPY /build/libs/blackfriday.jar /app/
 
 CMD ["java", "-jar", "/app/blackfriday.jar"]
