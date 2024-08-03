@@ -1,4 +1,4 @@
-package org.example.blackfriday.kafka.example;
+package org.example.meberservice.kafka.example;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

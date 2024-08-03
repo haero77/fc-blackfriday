@@ -1,4 +1,4 @@
-package org.example.blackfriday.kafka.example;
+package org.example.meberservice.kafka.example;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

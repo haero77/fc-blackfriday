@@ -1,4 +1,4 @@
-package org.example.blackfriday;
+package org.example.meberservice;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

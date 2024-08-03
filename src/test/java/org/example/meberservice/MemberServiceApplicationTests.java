@@ -1,10 +1,10 @@
-package org.example.blackfriday;
+package org.example.meberservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BlackfridayApplicationTests {
+class MemberServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
