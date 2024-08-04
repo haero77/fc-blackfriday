@@ -1,0 +1,28 @@
+### 결제 방식 추가
+POST http://localhost:8080/payment/methods
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "paymentMethodType": "CREDIT_CARD",
+    "creditCardNumber": "9999-9999-9999-9999"
+}
+
+### 결제 방식 조회
+@userId = 1
+GET http://localhost:8080/payment/users/{{userId}}/first-method
+
+### 결제 진행
+POST http://localhost:8080/payment/process-payment
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "orderId": 100,
+    "amountKRW": 30000,
+    "paymentMethodId": 2
+}
+
+### 결제 조회
+@paymentId = 1
+GET http://localhost:8080/payment/payments/{{paymentId}}
