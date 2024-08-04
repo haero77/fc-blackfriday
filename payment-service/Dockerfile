@@ -6,6 +6,6 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-COPY build/libs/PaymentService.jar /app/app.jar
+COPY build/libs/payment-service.jar /app/app.jar
 
 CMD ["java", "-jar", "app.jar"]
