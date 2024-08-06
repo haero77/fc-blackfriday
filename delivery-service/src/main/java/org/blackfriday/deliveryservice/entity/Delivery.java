@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.blackfriday.deliveryservice.enums.DeliveryStatus;
-import org.hibernate.event.internal.ProxyVisitor;
 
 @Entity
 @Table(indexes = {@Index(name = "idx_orderId", columnList = "orderId")})
@@ -22,7 +21,7 @@ public class Delivery {
     private Long orderId;
 
     @Enumerated(value = EnumType.STRING)
-    private DeliveryStatus deliveryStatus;
+    private DeliveryStatus status;
 
     private String productName;
 
@@ -35,17 +34,29 @@ public class Delivery {
     @Builder
     private Delivery(
             final Long orderId,
-            final DeliveryStatus deliveryStatus,
+            final DeliveryStatus status,
             final String productName,
             final Long productCount,
             final String address,
             final Long referenceCode
     ) {
         this.orderId = orderId;
-        this.deliveryStatus = deliveryStatus;
+        this.status = status;
         this.productName = productName;
         this.productCount = productCount;
         this.address = address;
         this.referenceCode = referenceCode;
+    }
+
+    public void updateToInDeliveryStatus() {
+        if (this.status.isRequested()) {
+            this.status = DeliveryStatus.IN_DELIVERY;
+        }
+    }
+
+    public void updateToCompletedStatus() {
+        if (this.status.isInDelivery()) {
+            this.status = DeliveryStatus.COMPLETED;
+        }
     }
 }

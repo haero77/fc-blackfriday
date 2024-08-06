@@ -17,12 +17,12 @@ public class UserAddress {
     @Column(name = "user_address_id")
     private Long id;
 
-    private String userId;
+    private Long userId;
     private String address;
     private String alias; // 별칭
 
     @Builder
-    private UserAddress(final String userId, final String address, final String alias) {
+    private UserAddress(final Long userId, final String address, final String alias) {
         this.userId = userId;
         this.address = address;
         this.alias = alias;

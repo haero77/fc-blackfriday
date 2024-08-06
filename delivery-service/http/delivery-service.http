@@ -1,0 +1,10 @@
+###
+POST http://localhost:8080/delivery/process-delivery
+Content-Type: application/json
+
+{
+    "orderId": 300,
+    "productName": "product_300",
+    "productCount": 300,
+    "address": "Seoul"
+}

@@ -1,4 +1,4 @@
-package org.blackfriday.deliveryservice.controller;
+package org.blackfriday.deliveryservice.dto;
 
 import lombok.Getter;
 

@@ -18,7 +18,7 @@ public class DeliveryService {
     private final DeliveryAdapter deliveryAdapter;
 
     public UserAddress addUserAddress(
-            final String userId,
+            final Long userId,
             final String address,
             final String alias
     ) {
@@ -40,7 +40,7 @@ public class DeliveryService {
 
         final Delivery delivery = Delivery.builder()
                 .orderId(orderId)
-                .deliveryStatus(DeliveryStatus.REQUESTED)
+                .status(DeliveryStatus.REQUESTED)
                 .productName(productName)
                 .productCount(productCount)
                 .address(address)

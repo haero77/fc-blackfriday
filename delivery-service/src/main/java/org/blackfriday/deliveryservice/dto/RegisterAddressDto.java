@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class RegisterAddressDto {
 
-    private String userId;
+    private Long userId;
     private String address;
     private String alias;
 
