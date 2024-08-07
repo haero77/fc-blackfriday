@@ -1,0 +1,26 @@
+### 태그 캐시 추가
+POST http://localhost:8080/search/addTagCache
+Content-Type: application/json
+
+{
+    "productId": 1001,
+    "tags": [
+        "tv",
+        "monitor"
+    ]
+}
+
+### 태그 캐시 삭제
+POST http://localhost:8080/search/removeTagCache
+Content-Type: application/json
+
+{
+    "productId": 1000,
+    "tags": [
+        "tv"
+    ]
+}
+
+### 프로덕트 ID 목록 조회
+@tag =monitor
+GET http://localhost:8080/search/tags/{{tag}}/productsIds
