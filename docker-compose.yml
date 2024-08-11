@@ -11,7 +11,7 @@ services:
   myredis:
     image: redis
     ports:
-      - "6379:6379"
+      - "6380:6380"
 
   cassandra-node-0:
     image: cassandra
