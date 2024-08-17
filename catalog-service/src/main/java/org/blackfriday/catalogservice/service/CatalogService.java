@@ -3,6 +3,8 @@ package org.blackfriday.catalogservice.service;
 import lombok.RequiredArgsConstructor;
 import org.blackfriday.catalogservice.cassandra.entity.Product;
 import org.blackfriday.catalogservice.cassandra.repository.ProductRepository;
+import org.blackfriday.catalogservice.feign.ProductTagsDto;
+import org.blackfriday.catalogservice.feign.SearchClient;
 import org.blackfriday.catalogservice.mysql.entity.SellerProduct;
 import org.blackfriday.catalogservice.mysql.entity.SellerProductRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,7 @@ public class CatalogService {
 
     private final SellerProductRepository sellerProductRepository;
     private final ProductRepository productRepository;
+    private final SearchClient searchClient;
 
     public Product registerProduct(
         final Long sellerId,
@@ -38,10 +41,19 @@ public class CatalogService {
             .stockCount(stockCount)
             .tags(tags)
             .build();
+
+        searchClient.addTagCache(new ProductTagsDto(tags, product.getId()));
+
         return productRepository.save(product);
     }
 
     public void deleteProductById(final Long productId) {
+        final Optional<Product> productOpt = productRepository.findById(productId);
+        if (productOpt.isPresent()) {
+            final Product product = productOpt.get();
+            searchClient.removeTagCache(new ProductTagsDto(product.getTags(), product.getId()));
+        }
+
         productRepository.deleteById(productId);
         sellerProductRepository.deleteById(productId);
     }
