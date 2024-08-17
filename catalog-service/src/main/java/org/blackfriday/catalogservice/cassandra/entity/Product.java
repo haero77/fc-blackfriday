@@ -61,6 +61,6 @@ public class Product {
             throw new IllegalStateException();
         }
 
-        this.stockCount = decreaseCount;
+        this.stockCount = decreasedCount;
     }
 }

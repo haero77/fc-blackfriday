@@ -1,0 +1,34 @@
+### 상품 등록
+POST http://localhost:8080/catalog/products
+Content-Type: application/json
+
+{
+    "sellerId": 110,
+    "name": "product01",
+    "description": "product01_description",
+    "price": 2000,
+    "stockCount": 110,
+    "tags": [
+        "tv",
+        "monitor"
+    ]
+}
+
+### 상품 조회
+@productId =4
+GET http://localhost:8080/catalog/products/{{productId}}
+
+### 상품 삭제
+DELETE http://localhost:8080/catalog/products/{{productId}}
+
+### 판매자의 상품 조회
+@sellerId =110
+GET http://localhost:8080/catalog/sellers/{{sellerId}}/products
+
+### 재고 감소
+POST http://localhost:8080/catalog/products/{{productId}}/decreaseStockCount
+Content-Type: application/json
+
+{
+  "decreaseCount": 1
+}
