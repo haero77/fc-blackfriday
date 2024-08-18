@@ -29,8 +29,8 @@ public class DeliveryController {
         );
     }
 
-    @PostMapping("/delivery/deliveries/{deliveryId}")
-    public Delivery getDelivery(@RequestBody Long deliveryId) {
+    @GetMapping("/delivery/deliveries/{deliveryId}")
+    public Delivery getDelivery(@PathVariable Long deliveryId) {
         return deliveryService.getDelivery(deliveryId);
     }
 
